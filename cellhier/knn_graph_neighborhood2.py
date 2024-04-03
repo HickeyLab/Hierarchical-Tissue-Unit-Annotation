@@ -115,8 +115,8 @@ class Neighborhoods(object):
         windows = {}
         for k in self.ks:
 
-            window = pd.concat([pd.DataFrame(out_dict[(exp,k)][0],index = out_dict[(exp,k)][1].astype(int),columns = self.sum_cols) for exp in self.exps],0)
+            window = pd.concat([pd.DataFrame(out_dict[(exp,k)][0],index = out_dict[(exp,k)][1].astype(int),columns = self.sum_cols) for exp in self.exps],axis=0)
             window = window.loc[self.cells.index.values]
-            window = pd.concat([self.cells[self.keep_cols],window],1)
+            window = pd.concat([self.cells[self.keep_cols],window],axis=1)
             windows[k] = window
         return windows
