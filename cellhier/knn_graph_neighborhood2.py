@@ -23,10 +23,10 @@ class Neighborhoods(object):
     def add_dummies(self):
         
         c = self.cells_nodumz
-        dumz = pd.get_dummies(c[self.cluster_col])
+        dumz = pd.get_dummies(c[self.cluster_col], dtype=int)
         keep = c[self.keep_cols]
         
-        self.cells = pd.concat([keep,dumz],1)
+        self.cells = pd.concat([keep,dumz],axis = 1)
         
         
         
